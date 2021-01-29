@@ -6,9 +6,9 @@ using System.Text;
 
 namespace RentACar.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class RentAuthContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public RentAuthContext(DbContextOptions<RentAuthContext> options)
             : base(options)
         {
         }

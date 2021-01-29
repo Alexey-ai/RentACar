@@ -1,0 +1,95 @@
+﻿@model IEnumerable<RentACar.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OdometerStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuelStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderReturnDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OdometerFinish)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuelFinish)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberofDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExtraMileage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OdometerStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderReturnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OdometerFinish)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelFinish)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberofDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExtraMileage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Driver.FName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OrderID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
