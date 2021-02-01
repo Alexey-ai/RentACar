@@ -20,6 +20,7 @@ namespace RentACar.Models
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Passport { get; set; }
+        public int Mileage { get; set; }
         public string DriveLicense { get; set; }
         [DataType(DataType.Date)]
         public DateTime BirthdayDate { get; set; }

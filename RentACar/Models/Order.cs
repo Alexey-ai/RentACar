@@ -19,6 +19,8 @@ namespace RentACar.Models
         public DateTime? OrderReturnDate { get; set; }
         public int? OdometerFinish { get; set; }
         public double? FuelFinish { get; set; }
+        public bool Closed { get; set; }
+        public int? MaxMileage { get; set; }
         public int? NumberofDays { get; set; }
         public int? ExtraMileage { get; set; }
         public int? Price { get; set; }

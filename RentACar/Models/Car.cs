@@ -35,6 +35,13 @@ namespace RentACar.Models
         public List<PictureModel> Pictures { get; set; } = new List<PictureModel>();
 
         public ICollection<Order> Order { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return ID + "--" + Manufacturer + "--" + Model+"--"+Year;
+            }
+        }
 
 
 
