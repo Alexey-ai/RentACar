@@ -1,0 +1,78 @@
+﻿@model RentACar.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Заказ от:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+        <dt class="col-sm-3">
+            Авто:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.FullName)
+        </dd>
+        <dt class="col-sm-3">
+            Водитель:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Driver.FullName)
+        </dd>
+        <dt class="col-sm-3">
+            Количество дней аренды:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumberofDays)
+        </dd>
+        <dt class="col-sm-3">
+            Цена за сутки:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Price)
+        </dd>
+        @if (Model.ExtraMileage != 0)
+        {
+            <dt class="col-sm-3">
+                Пробег превышающий разрешенный:
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ExtraMileage)
+            </dd>
+            <dt class="col-sm-3">
+                Штраф за каждые 100км свыше нормы:
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Car.OverPrice)
+            </dd>
+        }
+        @if (Model.FuelStart > Model.FuelFinish)
+        {
+            <dt class="col-sm-3">
+                Расход бензина:
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ExtraFuel)
+            </dd>
+        }
+        <dt class="col-sm-3">
+            Итого к оплате:
+        </dt>
+        <dd class="col-sm-10" style="text-size-adjust:200%">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.OrderID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

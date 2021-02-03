@@ -23,6 +23,14 @@ namespace RentACar.Models
         public int? MaxMileage { get; set; }
         public int? NumberofDays { get; set; }
         public int? ExtraMileage { get; set; }
+        public double ExtraFuel
+        {
+            get
+            {
+                if (FuelFinish < FuelStart) { return FuelStart-(double)FuelFinish; }
+                return 0;
+            }
+        }
         public int? Price { get; set; }
         public Car Car { get; set; }
         public Driver Driver { get; set; }

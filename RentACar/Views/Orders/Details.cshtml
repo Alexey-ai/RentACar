@@ -1,10 +1,10 @@
 ﻿@model RentACar.Models.Order
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "PayInfo";
 }
 
-<h1>Details</h1>
+<h1>PayInfo</h1>
 
 <div>
     <h4>Order</h4>
@@ -79,6 +79,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.OrderID">Edit</a> |
+    <a asp-action="Print" asp-route-id="@Model.OrderID">Print</a> |
     <a asp-action="Index">Back to List</a>
 </div>

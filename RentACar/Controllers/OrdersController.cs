@@ -148,8 +148,6 @@ namespace RentACar.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Update(order);
-                await _context.SaveChangesAsync();
                 order.Closed = true;
                 order.Price = 0;
                 order.ExtraMileage = 0;
@@ -179,6 +177,23 @@ namespace RentACar.Controllers
             return View(order);
         }
 
+        public async Task<IActionResult> PayInfo(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var order = await _context.Orders
+                .Include(o => o.Car)
+                .Include(o => o.Driver)
+                .FirstOrDefaultAsync(m => m.OrderID == id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+            return View(order);
+        }
         // GET: Orders/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
