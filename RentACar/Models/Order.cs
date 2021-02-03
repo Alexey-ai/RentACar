@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RentACar.Models
 {
@@ -34,6 +35,7 @@ namespace RentACar.Models
         public int? Price { get; set; }
         public Car Car { get; set; }
         public Driver Driver { get; set; }
+
 
     }
 }

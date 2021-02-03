@@ -194,6 +194,28 @@ namespace RentACar.Controllers
             }
             return View(order);
         }
+        public async Task<IActionResult> GetPay(int? id)
+        {
+            Pay pay = new Pay();
+
+            var order = await _context.Orders
+                .Include(o => o.Car)
+                .Include(o => o.Driver)
+                .FirstOrDefaultAsync(m => m.OrderID == id);
+            pay.Date = order.OrderDate;
+            pay.Model = order.Car.FullName;
+            pay.Name = order.Driver.FullName;
+            pay.Price = (int)order.Price;
+
+            System.Xml.Serialization.XmlSerializer xml = new System.Xml.Serialization.XmlSerializer(typeof(Pay));
+            var stream = new System.IO.MemoryStream();
+            xml.Serialize(stream, pay);
+            stream.Flush();
+            var data = stream.GetBuffer();
+            stream.Close();
+            string name = order.OrderDate.Date.Month.ToString()+" "+order.OrderDate.Date.Day.ToString()+"_"+ order.OrderID;
+            return File(data, "application/xhtml+xml", name+".xml");
+        }
         // GET: Orders/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
