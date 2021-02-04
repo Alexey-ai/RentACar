@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RentACar.Areas.Identity.Data;
 using RentACar.Data;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace RentACar
                     Configuration.GetConnectionString("RentIdentityDB")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<RentUser>()
                 .AddEntityFrameworkStores<RentAuthContext>();
 
             services.AddDbContext<RentContext>(options =>
