@@ -25,6 +25,10 @@ namespace RentACar.Controllers
         {
             return View();
         }
+        public IActionResult IndexNew()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {

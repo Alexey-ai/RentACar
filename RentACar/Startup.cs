@@ -37,6 +37,7 @@ namespace RentACar
             services.AddDefaultIdentity<RentUser>()
                 .AddEntityFrameworkStores<RentAuthContext>();
 
+
             services.AddDbContext<RentContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("RentDB")));
             services.AddControllersWithViews();
@@ -68,7 +69,7 @@ namespace RentACar
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=IndexNew}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
