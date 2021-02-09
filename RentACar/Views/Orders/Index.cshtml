@@ -4,10 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
+
 <h1>Index</h1>
 
 <p>
+    @if (User.HasClaim("Admin", bool.TrueString))
+    {
+
     <a asp-action="Create">Create New</a>
+    }
+
 </p>
 <table class="table">
     <thead>

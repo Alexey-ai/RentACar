@@ -13,6 +13,7 @@ namespace RentACar.Controllers
     public class CarsController : Controller
     {
         private readonly RentContext _context;
+        private bool Admin => HttpContext.User.HasClaim("Admin", bool.TrueString);
 
         public CarsController(RentContext context)
         {
@@ -22,6 +23,11 @@ namespace RentACar.Controllers
         // GET: Cars
         public async Task<IActionResult> Index()
         {
+            return View(await _context.Cars.ToListAsync());
+        }
+        public async Task<IActionResult> AdminPage()
+        {
+            if (!Admin) return Forbid();
             return View(await _context.Cars.ToListAsync());
         }
 
@@ -46,6 +52,7 @@ namespace RentACar.Controllers
         // GET: Cars/Create
         public IActionResult Create()
         {
+            if (!Admin) return Forbid();
             return View();
         }
 
@@ -68,10 +75,9 @@ namespace RentACar.Controllers
         // GET: Cars/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null)return NotFound();
+            if (!Admin) return Forbid();
+
 
             var car = await _context.Cars.FindAsync(id);
             if (car == null)
@@ -119,10 +125,8 @@ namespace RentACar.Controllers
         // GET: Cars/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
+            if (!Admin) return Forbid();
 
             var car = await _context.Cars
                 .FirstOrDefaultAsync(m => m.ID == id);

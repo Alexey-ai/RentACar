@@ -8,13 +8,15 @@ using Microsoft.EntityFrameworkCore;
 using RentACar.Data;
 using RentACar.Models;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RentACar.Controllers
-{
+{ 
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly RentContext _context;
-
+        private bool Admin => HttpContext.User.HasClaim("Admin", bool.TrueString);
         public OrdersController(RentContext context)
         {
             _context = context;
@@ -23,6 +25,8 @@ namespace RentACar.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
+            if (!Admin) return Forbid();
+
             var rentContext = _context.Orders.Include(o => o.Car).Include(o => o.Driver);
             return View(await rentContext.ToListAsync());
         }
@@ -30,10 +34,8 @@ namespace RentACar.Controllers
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (!Admin) return Forbid();
+            if (id == null)return NotFound();
 
             var order = await _context.Orders
                 .Include(o => o.Car)
@@ -50,6 +52,7 @@ namespace RentACar.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
+            if (!Admin) return Forbid();
             ViewData["CarID"] = new SelectList(_context.Cars, "ID", "FullName");
             ViewData["DriverID"] = new SelectList(_context.Drivers, "ID", "FullName");
             return View();
@@ -79,10 +82,8 @@ namespace RentACar.Controllers
         // GET: Orders/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (!Admin) return Forbid();
+            if (id == null) return NotFound();
 
             var order = await _context.Orders.FindAsync(id);
             if (order == null)
@@ -132,6 +133,7 @@ namespace RentACar.Controllers
         }
         public async Task<IActionResult> CloseOrder(int? id)
         {
+            if (!Admin)return Forbid();
             if (id == null)return NotFound();
 
             ViewData["CarID"] = new SelectList(_context.Cars, "ID", "FullName");
@@ -219,10 +221,8 @@ namespace RentACar.Controllers
         // GET: Orders/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (!Admin) return Forbid();
+            if (id == null) return NotFound();
 
             var order = await _context.Orders
                 .Include(o => o.Car)
@@ -255,5 +255,8 @@ namespace RentACar.Controllers
         {
             return _context.Orders.Any(e => e.OrderID == id);
         }
+
+
+
     }
 }

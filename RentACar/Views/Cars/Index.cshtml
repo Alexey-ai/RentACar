@@ -4,11 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Выбери свой автомобиль</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -22,63 +20,8 @@
                 @Html.DisplayNameFor(model => model.Year)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Vechicle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VechicleVolume)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WheelDrive)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CarType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Odometer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaxMileageatDay)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OverPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Deposit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RegistrationNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdentificationNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VinNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InsuranceNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InUse)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InRepair)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FuelMax)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CurrentFuel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FuelRate)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -94,66 +37,12 @@
                 @Html.DisplayFor(modelItem => item.Year)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Vechicle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VechicleVolume)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WheelDrive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CarType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Odometer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaxMileageatDay)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OverPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Deposit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegistrationNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdentificationNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VinNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InsuranceNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InUse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InRepair)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FuelMax)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CurrentFuel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FuelRate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.ID">Все характеристики</a>    
+
+                <a href="#" class="btn btn-primary">Заказать</a>
             </td>
         </tr>
 }

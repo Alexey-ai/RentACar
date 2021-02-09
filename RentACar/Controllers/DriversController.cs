@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,9 +11,12 @@ using RentACar.Models;
 
 namespace RentACar.Controllers
 {
+    [Authorize]
     public class DriversController : Controller
     {
         private readonly RentContext _context;
+        private bool Admin => HttpContext.User.HasClaim("Admin", bool.TrueString);
+
 
         public DriversController(RentContext context)
         {
@@ -22,16 +26,15 @@ namespace RentACar.Controllers
         // GET: Drivers
         public async Task<IActionResult> Index()
         {
+            if (!Admin) return Forbid();
             return View(await _context.Drivers.ToListAsync());
         }
 
         // GET: Drivers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (!Admin) return Forbid();
+            if (id == null)return NotFound();
 
             var driver = await _context.Drivers
                 .FirstOrDefaultAsync(m => m.ID == id);
@@ -46,6 +49,7 @@ namespace RentACar.Controllers
         // GET: Drivers/Create
         public IActionResult Create()
         {
+            if (!Admin) return Forbid();
             return View();
         }
 
@@ -68,10 +72,8 @@ namespace RentACar.Controllers
         // GET: Drivers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (!Admin) return Forbid();
+            if (id == null) return NotFound();
 
             var driver = await _context.Drivers.FindAsync(id);
             if (driver == null)
@@ -119,10 +121,8 @@ namespace RentACar.Controllers
         // GET: Drivers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (!Admin) return Forbid();
+            if (id == null) return NotFound();
 
             var driver = await _context.Drivers
                 .FirstOrDefaultAsync(m => m.ID == id);
