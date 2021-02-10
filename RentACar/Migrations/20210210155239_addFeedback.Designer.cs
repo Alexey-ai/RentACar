@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentACar.Data;
 
 namespace RentACar.Migrations
 {
     [DbContext(typeof(RentContext))]
-    partial class RentContextModelSnapshot : ModelSnapshot
+    [Migration("20210210155239_addFeedback")]
+    partial class addFeedback
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,7 +149,7 @@ namespace RentACar.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("CarID")
+                    b.Property<int?>("CarID")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -257,9 +259,7 @@ namespace RentACar.Migrations
                 {
                     b.HasOne("RentACar.Models.Car", "Car")
                         .WithMany()
-                        .HasForeignKey("CarID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CarID");
 
                     b.Navigation("Car");
                 });

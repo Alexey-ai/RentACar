@@ -13,6 +13,7 @@ namespace RentACar.Data
         public DbSet<Car> Cars { get; set; }
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<FeedBack> FeedBacks { get; set; }
         public DbSet<PictureModel> Pictures { get; set; }
 
 

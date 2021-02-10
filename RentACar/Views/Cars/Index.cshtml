@@ -42,7 +42,7 @@
             <td>
                 <a asp-action="Details" asp-route-id="@item.ID">Все характеристики</a>    
 
-                <a href="#" class="btn btn-primary">Заказать</a>
+                <a class="btn btn-primary" asp-controller="Feedbacks" asp-action="Create">Заказать</a>
             </td>
         </tr>
 }

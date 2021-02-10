@@ -1,0 +1,43 @@
+﻿@model RentACar.Models.FeedBack
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>FeedBack</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Processed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Processed)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="CloseFeedback" asp-route-id="@Model.ID">Close</a> |
+    <a asp-action="Delete" asp-route-id="@Model.ID">Delete</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
