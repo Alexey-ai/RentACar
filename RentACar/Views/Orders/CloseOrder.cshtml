@@ -15,6 +15,9 @@
             <input type="hidden" asp-for="OrderID" />
             <input type="hidden" asp-for="CarID" />
             <input type="hidden" asp-for="DriverID" />
+            <input type="hidden" asp-for="OrderDate" />
+            <input type="hidden" asp-for="OdometerStart" />
+            <input type="hidden" asp-for="FuelStart" />
             <div class="form-group">
                 <label asp-for="CarID" class="control-label"></label>
                 <select asp-for="CarID" class="form-control" asp-items="ViewBag.CarID"></select>
@@ -22,21 +25,6 @@
             <div class="form-group">
                 <label asp-for="DriverID" class="control-label"></label>
                 <select asp-for="DriverID" class="form-control" asp-items="ViewBag.DriverID"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrderDate" class="control-label"></label>
-                <input asp-for="OrderDate" class="form-control" />
-                <span asp-validation-for="OrderDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OdometerStart" class="control-label"></label>
-                <input asp-for="OdometerStart" class="form-control" />
-                <span asp-validation-for="OdometerStart" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FuelStart" class="control-label"></label>
-                <input asp-for="FuelStart" class="form-control" />
-                <span asp-validation-for="FuelStart" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="OrderReturnDate" class="control-label"></label>
@@ -54,29 +42,14 @@
                 <span asp-validation-for="FuelFinish" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumberofDays" class="control-label"></label>
-                <input asp-for="NumberofDays" class="form-control" />
-                <span asp-validation-for="NumberofDays" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExtraMileage" class="control-label"></label>
-                <input asp-for="ExtraMileage" class="form-control" />
-                <span asp-validation-for="ExtraMileage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="CloseOrder" class="btn btn-primary" />
+                <input type="submit" value="Закрыть Заказ" class="btn btn-danger" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn-link" asp-action="Index">Отмена</a>
 </div>
 
 @section Scripts {

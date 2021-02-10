@@ -69,8 +69,9 @@ namespace RentACar.Controllers
         public IActionResult Create()
         {
             if (!Admin) return Forbid();
-            ViewData["CarID"] = new SelectList(_context.Cars, "ID", "FullName");
+            ViewData["CarID"] = new SelectList(_context.Cars.Where(x=>x.InUse!=true&&x.InRepair!=true), "ID", "FullName");
             ViewData["DriverID"] = new SelectList(_context.Drivers, "ID", "FullName");
+
             return View();
         }
 
@@ -173,10 +174,20 @@ namespace RentACar.Controllers
                 var car = await _context.Cars.FindAsync(order.CarID);
                 var mileage = order.OdometerFinish - order.OdometerStart;
                 var days =(DateTime)order.OrderReturnDate-order.OrderDate;
+                
+                if (days.Days >= 0) order.NumberofDays = days.Days;
+                if (order.NumberofDays == 0) { order.NumberofDays = 1; }
 
-                order.MaxMileage = days.Days * car.MaxMileageatDay;
-                if (mileage > order.MaxMileage) { order.ExtraMileage = mileage - order.MaxMileage; order.Price += car.OverPrice*(order.ExtraMileage/100+1);  }
-                if (days.Days > 0) order.NumberofDays = days.Days;                
+                order.MaxMileage = order.NumberofDays * car.MaxMileageatDay;
+                if (mileage > order.MaxMileage) {
+                    order.ExtraMileage = mileage - order.MaxMileage;
+                    if (order.ExtraMileage % 100 == 0)
+                    {
+                        order.Price += car.OverPrice * order.ExtraMileage / 100;
+                    }
+                    else order.Price += car.OverPrice * (order.ExtraMileage / 100+1);
+                }
+                
                 order.Price += car.Price * order.NumberofDays;
                 if(order.FuelFinish<order.FuelStart)
                 {

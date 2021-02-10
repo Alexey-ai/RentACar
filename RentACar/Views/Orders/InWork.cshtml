@@ -22,30 +22,6 @@
                 @Html.DisplayNameFor(model => model.OrderDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OdometerStart)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FuelStart)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderReturnDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OdometerFinish)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FuelFinish)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberofDays)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExtraMileage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Car)
             </th>
             <th>
@@ -55,50 +31,25 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OdometerStart)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FuelStart)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderReturnDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OdometerFinish)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FuelFinish)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberofDays)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExtraMileage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Car.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Driver.FName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderID">Edit</a> |
-                <a asp-action="CloseOrder" asp-route-id="@item.OrderID">Close</a> |
-                <a asp-action="PayInfo" asp-route-id="@item.OrderID">PayInfo</a> |
-                <a asp-action="GetPay" asp-route-id="@item.OrderID">GetPay</a> |
-                <a asp-action="Details" asp-route-id="@item.OrderID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Driver.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Car.FullName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.OrderID">Edit</a> |
+                    <a asp-action="CloseOrder" asp-route-id="@item.OrderID">Close</a> |
+                    <a asp-action="Details" asp-route-id="@item.OrderID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.OrderID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

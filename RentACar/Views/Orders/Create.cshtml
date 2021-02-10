@@ -4,9 +4,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Создать новый заказ</h1>
 
-<h4>Order</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -27,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="OdometerStart" class="control-label"></label>
-                <input asp-for="OdometerStart" class="form-control" />
+                <input asp-for="OdometerStart" class="form-control"/>
                 <span asp-validation-for="OdometerStart" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,38 +34,9 @@
                 <input asp-for="FuelStart" class="form-control" />
                 <span asp-validation-for="FuelStart" class="text-danger"></span>
             </div>
+            <hr />          
             <div class="form-group">
-                <label asp-for="OrderReturnDate" class="control-label"></label>
-                <input asp-for="OrderReturnDate" class="form-control" />
-                <span asp-validation-for="OrderReturnDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OdometerFinish" class="control-label"></label>
-                <input asp-for="OdometerFinish" class="form-control" />
-                <span asp-validation-for="OdometerFinish" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FuelFinish" class="control-label"></label>
-                <input asp-for="FuelFinish" class="form-control" />
-                <span asp-validation-for="FuelFinish" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NumberofDays" class="control-label"></label>
-                <input asp-for="NumberofDays" class="form-control" />
-                <span asp-validation-for="NumberofDays" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExtraMileage" class="control-label"></label>
-                <input asp-for="ExtraMileage" class="form-control" />
-                <span asp-validation-for="ExtraMileage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Создать" class="btn btn-outline-info text-black-50" />
             </div>
         </form>
     </div>
