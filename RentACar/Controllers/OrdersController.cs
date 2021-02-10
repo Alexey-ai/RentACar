@@ -22,12 +22,28 @@ namespace RentACar.Controllers
             _context = context;
         }
 
-        // GET: Orders
+        // GET: All Orders
         public async Task<IActionResult> Index()
         {
             if (!Admin) return Forbid();
 
             var rentContext = _context.Orders.Include(o => o.Car).Include(o => o.Driver);
+            return View(await rentContext.ToListAsync());
+        }
+        // GET: Orders in work
+        public async Task<IActionResult> InWork()
+        {
+            if (!Admin) return Forbid();
+
+            var rentContext = _context.Orders.Include(o => o.Car).Include(o => o.Driver).Where(x => x.Closed != true);
+            return View(await rentContext.ToListAsync());
+        }
+        // GET: Closed Orders
+        public async Task<IActionResult> Closed()
+        {
+            if (!Admin) return Forbid();
+
+            var rentContext = _context.Orders.Include(o => o.Car).Include(o => o.Driver).Where(x => x.Closed == true);
             return View(await rentContext.ToListAsync());
         }
 

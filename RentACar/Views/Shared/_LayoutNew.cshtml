@@ -19,21 +19,21 @@
                 @if (User.HasClaim("Admin", bool.TrueString))
                 {
                     <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Cars" asp-action="AdminPage">Автомобили</a>
+                        <a class="nav-link aria-haspopup text-white" asp-area="" asp-controller="Cars" asp-action="AdminPage">Автомобили</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Drivers" asp-action="Index">Водители</a>
+                        <a class="nav-link aria-haspopup text-white" asp-area="" asp-controller="Drivers" asp-action="Index">Водители</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Orders" asp-action="Index">Заказы</a>
+                        <a class="nav-link aria-haspopup text-success" asp-area="" asp-controller="Orders" asp-action="Create">Новый заказ</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Заказы</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Orders" asp-action="InWork">В работе</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Orders" asp-action="Closed">Закрытые</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Orders" asp-action="Index">Посмотреть Все</a>
                         </div>
                     </li>
                     <li class="nav-item">
