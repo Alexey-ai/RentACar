@@ -15,6 +15,7 @@ namespace RentACar.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<FeedBack> FeedBacks { get; set; }
         public DbSet<PictureModel> Pictures { get; set; }
+        public DbSet<Appeal> Appeales { get; set; }
 
 
     }

@@ -11,11 +11,11 @@ namespace RentACar.Models
         public int ID { get; set; }
         [Required]
         [StringLength(30, MinimumLength = 3)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$",ErrorMessage = "Please enter correct name")]
         public string FName { get; set; }
         [Required]
         [StringLength(30, MinimumLength = 3)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$", ErrorMessage = "Please enter correct name")]
         public string LName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }

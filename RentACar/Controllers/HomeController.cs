@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using RentACar.Data;
+using System.IO;
 
 namespace RentACar.Controllers
 {
@@ -33,6 +34,16 @@ namespace RentACar.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+        public IActionResult AboutUS()
+        {
+            return View();
+        }
+        public IActionResult GetContact()
+        {
+            var filepath = Path.Combine("~\\files", "contact.txt");
+            return File(filepath, "text/plain", "contact.txt");
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

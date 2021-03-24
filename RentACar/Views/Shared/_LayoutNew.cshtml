@@ -7,6 +7,7 @@
     <title>Welcome to RentACar</title>
     <!-- Bootstrap -->
     <link href="~/css/bootstrap-4.4.1.css" rel="stylesheet">
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -40,12 +41,15 @@
                         <a class="nav-link disabled" href="#">Disabled</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Обращения</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Онлайн заказы</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-success"asp-controller="Feedbacks" asp-action="New">Новые</a>
+                            <a class="dropdown-item text-success" asp-controller="Feedbacks" asp-action="New">Новые</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" asp-controller="Feedbacks" asp-action="Index">Посмотреть Все</a>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link aria-haspopup text-success" asp-area="" asp-controller="Appeals" asp-action="ViewAll">Обращения</a>
                     </li>
 
                 }
@@ -61,7 +65,7 @@
                         <a class="nav-link text-white" asp-area="" asp-controller="Cars" asp-action="Index">Лизинг</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Cars" asp-action="Index">О нас</a>
+                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AboutUS">О нас</a>
                     </li>
                 }
 
