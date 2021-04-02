@@ -148,24 +148,21 @@
                     <form asp-controller="Appeals" asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
-                            <label asp-for="Name">Name</label>
-                            <span asp-validation-for="Name" class="text-danger"></span>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                            <label asp-for="Name">Ваше Имя</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Укажите ваше имя" required>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Email">E-Mail</label>
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" aria-describedby="emailHelp">
-                            <span id="emailHelp" class="form-text text-muted" style="display: none;">Please enter a valid e-mail address.</span>
+                            <label asp-for="Contact">Способ связи</label>
+                            <input type="text" class="form-control" id="contact" name="contact" placeholder="Укажите вашу почту или телефон" aria-describedby="text"required>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Text">Message</label>
+                            <label asp-for="Text">Текст Обращения</label>
                             <span asp-validation-for="Text" class="text-danger"></span>
-                            <textarea rows="10" cols="100" class="form-control" id="Text" name="Text" placeholder="Please enter a message" aria-describedby="messageHelp"></textarea>
-                            <span id="messageHelp" class="form-text text-muted" style="display: none;">Please enter a message.</span>
+                            <textarea rows="10" cols="100" class="form-control" id="Text" name="Text" placeholder="Введите ваше сообщение" aria-describedby="messageHelp"required></textarea>
+                            <span id="messageHelp" class="form-text text-muted" style="display: none;">Введите ваше сообщение</span>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
                         </div>
                     </form>
                 </div>

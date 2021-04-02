@@ -12,7 +12,7 @@ namespace RentACar.Models
         public int CarID { get; set; }
         [Required]
         [StringLength(30, MinimumLength = 3)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$", ErrorMessage = "Please enter correct name")]
+        [RegularExpression(@"^[a-zA-Zа-яА-ЯёЁ""'\s-]*$", ErrorMessage = "Please enter correct name")]
         public string Name { get; set; }
         
         [Required]

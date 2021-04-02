@@ -9,16 +9,14 @@ namespace RentACar.Models
     public class Appeal
     {
         public int ID { get; set; }
-        [Required]
-        [StringLength(30, MinimumLength = 3)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$", ErrorMessage = "Please enter correct name")]
+        [Required(ErrorMessage ="Поле не может быть пустым")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Имя должно быть более 3х букв")]
+        [RegularExpression(@"^[a-zA-Zа-яА-ЯёЁ""'\s-]*$", ErrorMessage = "Пожалуйста введите корректное имя")]
         public string Name { get; set; }
-        [Required]
-        [StringLength(30, MinimumLength = 3)]
-        [RegularExpression(@"^\S+@\S+\.\S+$", ErrorMessage = "Please enter correct email")]
-        public string Email { get; set; }
-        [Required]
-        [StringLength(300, MinimumLength = 3, ErrorMessage = "Please enter correct text")]
+        [Required(ErrorMessage = "Поле не может быть пустым")]
+        public string Contact { get; set; }
+        [Required(ErrorMessage = "Поле не может быть пустым")]
+        [StringLength(300, MinimumLength = 3, ErrorMessage = "Пожалуйста введите корректный текст")]
         public string Text { get; set; }
     }
 }

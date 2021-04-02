@@ -39,6 +39,10 @@ namespace RentACar.Controllers
         {
             return View();
         }
+        public IActionResult Transfer()
+        {
+            return View();
+        }
         public IActionResult GetContact()
         {
             var filepath = Path.Combine("~\\files", "contact.txt");

@@ -54,13 +54,13 @@ namespace RentACar.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Email,Text")] Appeal appeal)
+        public async Task<IActionResult> Create([Bind("ID,Name,Contact,Text")] Appeal appeal)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(appeal);
                 await _context.SaveChangesAsync();
-                return Redirect("~/Home/AboutUS");
+                return Redirect("~/Home/IndexNew");
             }
             return View(appeal);
         }
@@ -86,7 +86,7 @@ namespace RentACar.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Email,Text")] Appeal appeal)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Contact,Text")] Appeal appeal)
         {
             if (id != appeal.ID)
             {
