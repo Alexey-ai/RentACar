@@ -23,7 +23,8 @@ namespace RentACar.Controllers
         // GET: Cars
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cars.ToListAsync());
+
+            return View(await _context.Cars.Include(p => p.Pictures).ToListAsync());
         }
         public async Task<IActionResult> AdminPage()
         {

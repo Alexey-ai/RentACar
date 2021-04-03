@@ -147,7 +147,22 @@
 <div>
     @if (User.HasClaim("Admin", bool.TrueString))
     {
+        <div>
+
+            <form asp-action="AddPictureToCar" asp-route-id="@Model.ID" asp-controller="PictureModels" method="post" enctype="multipart/form-data">
+                <input type="file" name="uploadedFile" /><br>
+                <input type="submit" value="Add Picture To Car" />
+            </form>
+        </div>
+        <p></p>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-danger">Изменить</a> |
+            <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+        </div>
+    }
+    @if (User.HasClaim("Admin", bool.TrueString))
+    {
         <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a>
     }
-<a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>

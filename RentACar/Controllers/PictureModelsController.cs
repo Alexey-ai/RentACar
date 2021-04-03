@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RentACar.Data;
 using RentACar.Models;
+using Microsoft.AspNetCore.Hosting;
 
 namespace RentACar.Controllers
 {
     public class PictureModelsController : Controller
     {
         private readonly RentContext _context;
+        private IWebHostEnvironment _environment;
 
-        public PictureModelsController(RentContext context)
+        public PictureModelsController(RentContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         // GET: PictureModels
@@ -25,6 +30,43 @@ namespace RentACar.Controllers
             return View(await _context.Pictures.ToListAsync());
         }
 
+        public async Task<IActionResult> AddFile(IFormFile uploadedFile)
+        {
+            if (uploadedFile != null)
+            {
+                string path = "/Files/" + uploadedFile.FileName;
+                using (var fileStream = new FileStream(_environment.WebRootPath + path, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+                PictureModel picture = new PictureModel { Name = uploadedFile.FileName, Path = path };
+                _context.Pictures.Add(picture);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> AddPictureToCar(int? id, IFormFile uploadedFile)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            if (uploadedFile != null)
+            {
+                string path = "/Files/" + uploadedFile.FileName;
+                using (var fileStream = new FileStream(_environment.WebRootPath + path, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+                PictureModel picture = new PictureModel { Name = uploadedFile.FileName, Path = path };
+                var car = await _context.Cars
+                .FirstOrDefaultAsync(b => b.ID == id);
+                car.Pictures.Add(picture);
+                _context.Cars.Update(car);
+                _context.SaveChanges();
+            }
+            return Redirect(("/Cars/Details/" + id.ToString()));
+        }
         // GET: PictureModels/Details/5
         public async Task<IActionResult> Details(int? id)
         {
