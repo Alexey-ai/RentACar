@@ -42,11 +42,18 @@ namespace RentACar.Models
                 return ID + "--" + Manufacturer + "--" + Model+"--"+Year;
             }
         }
+        public string TradeNameYear
+        {
+            get
+            {
+                return Manufacturer + "-" + Model + "-" + Year;
+            }
+        }
         public string TradeName
         {
             get
             {
-                return Manufacturer + " " + Model + "- -" + Year;
+                return Manufacturer + "-" + Model;
             }
         }
 

@@ -51,7 +51,17 @@ namespace RentACar.Controllers
         // GET: FeedBacks/Create
         public IActionResult Create()
         {
-            ViewData["CarID"] = new SelectList(_context.Cars,"ID","TradeName");
+            ViewData["CarID"] = new SelectList(_context.Cars,"ID","TradeNameYear");
+            return View();
+        }
+        public IActionResult CreatebyModel(string model)
+        {
+            if (model == null)
+            {
+                return NotFound();
+            }
+            ViewData["CarID"] = new SelectList(_context.Cars.Where(x=>x.Model==model), "ID", "TradeNameYear");
+            //ViewData["CarID"] = _context.Cars.Where(x=>x.Model==_Tradename);
             return View();
         }
 
