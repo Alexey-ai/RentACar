@@ -93,13 +93,12 @@ namespace RentACar.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Manufacturer,Model,Year,Vechicle,VechicleVolume,WheelDrive,CarType,Odometer,MaxMileageatDay,Price,OverPrice,Deposit,RegistrationNumber,IdentificationNumber,VinNumber,InsuranceNumber,Color,InUse,InRepair,FuelMax,CurrentFuel,FuelRate")] Car car)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Manufacturer,Model,Year,Vechicle,WheelDrive,CarType,VechicleVolume,Odometer,MaxMileageatDay,Price,OverPrice,Deposit,RegistrationNumber,IdentificationNumber,VinNumber,InsuranceNumber,Color,InUse,InRepair,FuelMax,CurrentFuel,FuelRate")] Car car)
         {
             if (id != car.ID)
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
@@ -145,6 +144,11 @@ namespace RentACar.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var car = await _context.Cars.FindAsync(id);
+            var pictures =  _context.Pictures.Where(x=>x.CarID==id);
+            foreach(var pic in pictures)
+            {
+                _context.Pictures.Remove(pic);
+            }
             _context.Cars.Remove(car);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace RentACar.Models
 {
@@ -12,7 +13,9 @@ namespace RentACar.Models
         public string Manufacturer { get; set; }
         public string Model { get; set; }
         public int Year { get; set; }
-        public string Vechicle { get; set; }       
+        public string Vechicle { get; set; }
+        [Required(ErrorMessage = "Поле не может быть пустым")]
+        [RegularExpression(@"^[0-9]*[,]?[0-9]+$", ErrorMessage = "Числа вводятся в формате x или x,x")]
         public double VechicleVolume { get; set; }
         public string WheelDrive { get; set; }
         public string CarType { get; set; }

@@ -12,6 +12,7 @@ namespace RentACar.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Path { get; set; }
+        public int CarID { get; set; }
 
     }
 }
