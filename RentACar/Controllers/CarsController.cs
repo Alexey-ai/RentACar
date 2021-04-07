@@ -62,7 +62,7 @@ namespace RentACar.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Manufacturer,Model,Year,Vechicle,VechicleVolume,WheelDrive,CarType,Odometer,MaxMileageatDay,Price,OverPrice,Deposit,RegistrationNumber,IdentificationNumber,VinNumber,InsuranceNumber,Color,InUse,InRepair,FuelMax,CurrentFuel,FuelRate")] Car car)
+        public async Task<IActionResult> Create([Bind("ID,Manufacturer,Model,Year,Vechicle,VechicleVolume,WheelDrive,CarType,Odometer,MaxMileageatDay,Price,OverPrice,Deposit,RegistrationNumber,IdentificationNumber,VinNumber,InsuranceNumber,Color,InUse,InRepair,FuelMax,CurrentFuel,FuelRate,ShortDescription")] Car car)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace RentACar.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Manufacturer,Model,Year,Vechicle,WheelDrive,CarType,VechicleVolume,Odometer,MaxMileageatDay,Price,OverPrice,Deposit,RegistrationNumber,IdentificationNumber,VinNumber,InsuranceNumber,Color,InUse,InRepair,FuelMax,CurrentFuel,FuelRate")] Car car)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Manufacturer,Model,Year,Vechicle,WheelDrive,CarType,VechicleVolume,Odometer,MaxMileageatDay,Price,OverPrice,Deposit,RegistrationNumber,IdentificationNumber,VinNumber,InsuranceNumber,Color,InUse,InRepair,FuelMax,CurrentFuel,FuelRate,ShortDescription")] Car car)
         {
             if (id != car.ID)
             {

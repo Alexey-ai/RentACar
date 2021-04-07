@@ -34,6 +34,7 @@ namespace RentACar.Models
         public double FuelMax { get; set; }
         public double CurrentFuel { get; set; }
         public double FuelRate { get; set; }
+        public string ShortDescription { get; set; }
 
         public List<PictureModel> Pictures { get; set; } = new List<PictureModel>();
 

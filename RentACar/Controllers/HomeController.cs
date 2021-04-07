@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RentACar.Data;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace RentACar.Controllers
 {
@@ -26,9 +27,9 @@ namespace RentACar.Controllers
         {
             return View();
         }
-        public IActionResult IndexNew()
+        public async Task<IActionResult> IndexNew()
         {
-            return View();
+            return View(await _context.Cars.Take(4).Include(p => p.Pictures).ToListAsync());
         }
 
         public IActionResult Privacy()

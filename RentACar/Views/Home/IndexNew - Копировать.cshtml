@@ -1,5 +1,35 @@
 ﻿@model IEnumerable<RentACar.Models.Car>
-   
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @if (item.Pictures.FirstOrDefault() != null)
+            {
+            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="@Url.Content(item.Pictures.FirstOrDefault().Path)" data-holder-rendered="true">
+            }
+            else
+            {
+            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="~/images/140X140.gif" data-holder-rendered="true">
+            }
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td style="vertical-align:middle">
+            <a asp-action="Details" asp-route-id="@item.ID">Все характеристики</a>
+
+            <a class="btn btn-primary" asp-controller="Feedbacks" asp-action="Create">Заказать</a>
+        </td>
+    </tr>
+    }
     <div class="container mt-3">
         <div class="row">
             <div class="col-12">
@@ -92,30 +122,48 @@
         <div class="row">
             <div class="col-lg-8 col-12">
                 <div class="row">
-                    @foreach (var item in Model) {
                     <div class="col-sm-6 col-12">
                         <div class="card">
-                            @if (item.Pictures.FirstOrDefault() != null)
-                            {
-                            <img class="card-img-top" alt="Card image cap" src="@Url.Content(item.Pictures.FirstOrDefault().Path)"style="width: 300px; height: 200px;"data-holder-rendered="true">
-                            }
-                            else
-                            {
-                            <img class="card-img-top" src="~/images/400X200.gif"style="width: 300px; height: 200px;" alt="Card image cap"data-holder-rendered="true">
-                            }                            
+                            <img class="card-img-top" src="~/images/400X200.gif" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.TradeName)</h5>
-                                @if (item.ShortDescription != null){
-                                <p class="card-text">@Html.DisplayFor(modelItem => item.ShortDescription)</p>
-                                }else
-                                {
-                                <p class="card-text">Отличный авто</p>
-                                }
-                                <a class="btn btn-primary" asp-controller="Feedbacks" asp-action="CreatebyModel" asp-route-model="@item.Model">Заказать</a>
+                                <h5 class="card-title">Ford Focus</h5>
+                                <p class="card-text">Экономный седан</p>
+                                <a class="btn btn-primary" asp-controller="Feedbacks" asp-action="CreatebyModel" asp-route-model="Focus">Заказать</a>
                             </div>
                         </div>
                     </div>
-                    }
+                    <div class="col-sm-6 col-12">
+                        <div class="card">
+                            <img class="card-img-top" src="~/images/400X200.gif" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Reno Duster</h5>
+                                <p class="card-text">Проходимый внедорожник</p>
+                                <a class="btn btn-primary" asp-controller="Feedbacks" asp-action="Create">Заказать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-12">
+                        <div class="card">
+                            <img class="card-img-top" src="~/images/400X200.gif" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Opel Astra Cabrio</h5>
+                                <p class="card-text">Красивый кабриолет</p>
+                                <a class="btn btn-primary" asp-controller="Feedbacks" asp-action="Create">Заказать</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="card">
+                            <img class="card-img-top" src="~/images/400X200.gif" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Kia Optima</h5>
+                                <p class="card-text">Оптимальный бизнес класс</p>
+                                <a class="btn btn-primary" asp-controller="Feedbacks" asp-action="Create">Заказать</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <hr>
